@@ -1,1 +1,139 @@
-<p>register works!</p>
+<div class="form-card">
+  <h2>Create account</h2>
+
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <div class="field">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="ABC" [(ngModel)]="Name" #nameRef="ngModel" required  maxlength="100">
+        <span class="error" *ngIf="nameRef.invalid && nameRef.touched">
+          <span *ngIf="nameRef.errors?.['required']">Full name is required</span>
+          <span *ngIf="nameRef.errors?.['maxlength']">Name cannot exceed 100 characters</span>
+        </span>
+      </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input 
+        type="email" 
+        id="email"
+        name="email"
+        placeholder="you@example.com" 
+        [(ngModel)]="Email"
+        #emailRef="ngModel"
+        required
+        email>
+      <span class="error" *ngIf="emailRef.invalid && emailRef.touched">
+        <span *ngIf="emailRef.errors?.['required']">Email is required</span>
+        <span *ngIf="emailRef.errors?.['email']">Enter a valid email</span>
+      </span>
+        </div>
+
+        <div class="field">
+      <label for="phone">Phone Number</label>
+      <input 
+        type="string" 
+        id="phone"
+        name="phone"
+        placeholder="+91 98765 43210" 
+        [(ngModel)]="PhoneNumber"
+        #phoneRef="ngModel"
+        required
+        pattern="[0-9+\s]{10,15}">
+      <span class="error" *ngIf="phoneRef.invalid && phoneRef.touched">
+        <span *ngIf="phoneRef.errors?.['required']">Phone number is required</span>
+        <span *ngIf="phoneRef.errors?.['pattern']">Enter a valid phone number</span>
+      </span>
+    </div>
+
+   <div class="field">
+  <label for="skin">Skin Type</label>
+  <input type="text" id="skin" name="skin" placeholder="Enter skin type" 
+    [(ngModel)]="SkinType" #skinRef="ngModel" required maxlength="100">
+  <span class="error" *ngIf="skinRef.invalid && skinRef.touched">
+    <span *ngIf="skinRef.errors?.['required']">Skin type is required</span>
+    <span *ngIf="skinRef.errors?.['maxlength']">Skin type cannot exceed 100 characters</span>
+  </span>
+</div>
+     <div class="field">
+      <label for="password">Password</label>
+      <div class="password-wrapper">
+        <input 
+          type="password" 
+          id="password"
+          name="password"
+          placeholder="••••••••" 
+          [(ngModel)]="Password"
+          #passwordRef="ngModel"
+          required
+          minlength="6">
+      </div>
+      <span class="error" *ngIf="passwordRef.invalid && passwordRef.touched">
+        <span *ngIf="passwordRef.errors?.['required']">Password is required</span>
+        <span *ngIf="passwordRef.errors?.['minlength']">Password must be at least 6 characters</span>
+      </span>
+    </div>
+
+      <div class="field">
+        <label for="age">Age</label>
+        <input 
+          type="number" 
+          id="age"
+          name="age"
+          placeholder="25"
+          [(ngModel)]="Age"
+          #ageRef="ngModel"
+          required
+          min="1"
+          max="120">
+        <span class="error" *ngIf="ageRef.invalid && ageRef.touched">
+          <span *ngIf="ageRef.errors?.['required']">Age is required</span>
+          <span *ngIf="ageRef.errors?.['min'] || ageRef.errors?.['max']">Enter a valid age between 1 and 120</span>
+        </span>
+      </div>
+    </div>
+
+      <div class="field">
+        <label>Gender</label>
+        <div class="gender-group">
+          <label class="radio-label">
+            <input type="radio" name="gender" value="male" [(ngModel)]="Gender"> Male
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="gender" value="female" [(ngModel)]="Gender"> Female
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="gender" value="other" [(ngModel)]="Gender"> Other
+          </label>
+        </div>
+      </div>
+
+    <div class="row">
+      <div class="field">
+        <label for="role">Role</label>
+        <select 
+          id="role"
+          name="role"
+          [(ngModel)]="Role"
+          #roleRef="ngModel"
+          required>
+          <option value="" disabled selected>Select role</option>
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+        </select>
+        <span class="error" *ngIf="roleRef.invalid && roleRef.touched">
+          Role is required
+        </span>
+      </div>
+
+    </div>
+
+    <button class="btn-primary" type="submit" >
+      <span class="btn-label" >Create account</span>
+    </button>
+
+  </form>
+
+  <p class="footer-link">Already have an account? <a routerLink="/login">Sign in</a></p>
+</div>

@@ -1,0 +1,86 @@
+<div class="home-container">
+
+  <nav class="navbar">
+    <h1 class="logo">Radiant Roots</h1>
+    <div class="nav-right">
+      <span class="welcome">Welcome, {{ email }}</span>
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h2> Dashboard</h2>
+    <p class="subtitle">What would you like to do?</p>
+
+    <div class="card-grid">
+
+     <div class="search-wrapper">
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Search products..." [(ngModel)]="searchProduct">
+    <button class="search-btn">🔍</button>
+  </div>
+
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let product of filteredProducts">
+      <div class="product-icon">🧴</div>
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.category }}</p>
+      <span class="price">₹{{ product.price }}</span>
+    </div>
+
+    <div class="no-result" *ngIf="filteredProducts.length === 0">
+      <p>No products found 😔</p>
+    </div>
+  </div>
+</div>
+
+<div class="field">
+        <label>Gender</label>
+        <div class="gender-group">
+          <label class="radio-label">
+            <input type="radio" name="gender" value="male" [(ngModel)]="Gender"> Male
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="gender" value="female" [(ngModel)]="Gender"> Female
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="gender" value="other" [(ngModel)]="Gender"> Other
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+        <label for="age">Age</label>
+        <input 
+          type="number" 
+          id="age"
+          name="age"
+          placeholder="25"
+          [(ngModel)]="Age"
+          #ageRef="ngModel"
+          required
+          min="1"
+          max="120">
+        <span class="error" *ngIf="ageRef.invalid && ageRef.touched">
+          <span *ngIf="ageRef.errors?.['required']">Age is required</span>
+          <span *ngIf="ageRef.errors?.['min'] || ageRef.errors?.['max']">Enter a valid age between 1 and 120</span>
+        </span>
+      </div>
+    </div>
+
+       <div class="field">
+  <label for="skin">Skin Type</label>
+  <input type="text" id="skin" name="skin" placeholder="Enter skin type" 
+    [(ngModel)]="SkinType" #skinRef="ngModel" required maxlength="100">
+  <span class="error" *ngIf="skinRef.invalid && skinRef.touched">
+    <span *ngIf="skinRef.errors?.['required']">Skin type is required</span>
+    <span *ngIf="skinRef.errors?.['maxlength']">Skin type cannot exceed 100 characters</span>
+  </span>
+</div>
+<div class="btn-submit">
+      <button onclick="Submit()">Submit</button>
+</div>
+    </div>
+  
+
