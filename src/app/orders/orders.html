@@ -1,0 +1,65 @@
+<div class="order-container">
+
+  <nav class="navbar">
+    <h1 class="logo">Radiant Roots</h1>
+    <div class="nav-right">
+      <span class="welcome">Welcome, {{ email }}</span>
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h2>My Orders</h2>
+    <p class="subtitle">Track and manage your orders</p>
+
+   
+
+    <!-- ORDERS LIST -->
+    <div class="orders-list" *ngIf="filteredOrders.length > 0">
+      <div class="order-card" *ngFor="let order of filteredOrders">
+
+        <!-- ORDER HEADER -->
+        <div class="order-header">
+          <div class="order-meta">
+            <span class="order-id">Order #{{ order.id }}</span>
+            <span class="order-date">{{ order.date }}</span>
+          </div>
+        </div>
+
+        <!-- ORDER ITEMS -->
+        <div class="order-items">
+          <div class="order-item" *ngFor="let item of order.items">
+            <div class="item-thumb">🧴</div>
+            <div class="item-info">
+              <p class="item-name">{{ item.name }}</p>
+              <p class="item-meta">Qty: {{ item.quantity }} &nbsp;|&nbsp; ₹{{ item.price }} each</p>
+            </div>
+            <div class="item-subtotal">₹{{ item.price * item.quantity }}</div>
+          </div>
+        </div>
+
+        <!-- ORDER FOOTER -->
+        <div class="order-footer">
+          <div class="order-total">
+            <span>Total</span>
+            <span class="total-amount">₹{{ order.total }}</span>
+          </div>
+          <div class="order-actions">
+            <button class="btn-return"
+              *ngIf="order.status === 'delivered'"
+              routerLink="(['/return'])">
+              ↩ Return Order
+            </button>
+            
+            <span class="returned-label" *ngIf="order.status === 'returned'">
+              ✔ Return Requested
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+   
+  </div>
+</div>

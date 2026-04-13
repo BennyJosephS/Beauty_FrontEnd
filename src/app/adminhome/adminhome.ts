@@ -13,7 +13,7 @@ email: string = '';
 Gender: string = '';
 searchProduct: string = '';
 logout() {
-  // Clear user session or token
+ 
 }
 }
 

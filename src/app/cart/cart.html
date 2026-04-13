@@ -1,0 +1,97 @@
+<div class="cart-container">
+
+  <nav class="navbar">
+    <h1 class="logo">Radiant Roots</h1>
+    <div class="nav-right">
+      <span class="welcome">Welcome, {{ email }}</span>
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h2>Your Cart</h2>
+    <p class="subtitle">Review your items before checkout</p>
+
+    <div class="cart-layout">
+
+      <!-- CART ITEMS TABLE -->
+      <div class="cart-table-wrapper">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Subtotal</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cartItems; let i = index">
+              <td class="muted">{{ item.id }}</td>
+              <td><div class="product-thumb">🧴</div></td>
+              <td class="product-name">{{ item.name }}</td>
+              <td>₹{{ item.price }}</td>
+              <td>
+                <div class="qty-control">
+                  <button (click)="decreaseQty(i)">−</button>
+                  <span>{{ item.quantity }}</span>
+                  <button (click)="increaseQty(i)">+</button>
+                </div>
+              </td>
+              <td class="subtotal">₹{{ item.price * item.quantity }}</td>
+              <td>
+                <button class="btn-remove" (click)="removeItem(i)">🗑</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="empty-cart" *ngIf="cartItems.length === 0">
+          <p>🛒 Your cart is empty</p>
+          <button class="btn-shop"routerLink="(['/userhome'])">Continue Shopping</button>
+        </div>
+      </div>
+
+      <!-- ORDER SUMMARY -->
+      <div class="order-summary" *ngIf="cartItems.length > 0">
+        <h3>Order Summary</h3>
+
+        <div class="summary-row">
+          <span>Items ({{ cartItems.length }})</span>
+          <span>₹{{ subtotal }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery</span>
+          <span class="free">FREE</span>
+        </div>
+        <div class="summary-row discount" *ngIf="discount > 0">
+          <span>Discount</span>
+          <span>− ₹{{ discount }}</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="summary-total">
+          <span>Total</span>
+          <span>₹{{ total }}</span>
+        </div>
+
+        <button class="btn-checkout" (click)="checkout()">
+          Proceed to Checkout
+        </button>
+
+        <button class="btn-order" (click)="placeOrder()">
+          Place Order Now
+        </button>
+
+        <button class="btn-continue" routerLink="(['/userhome'])">
+          ← Continue Shopping
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
