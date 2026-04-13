@@ -1,18 +1,17 @@
 import { Component, signal } from '@angular/core';
+import { Register } from "./register/register";
+import { Userhome } from "../userhome/userhome";
 import { Login } from './login/login';
-import { Return } from './return/return';
-import { Register } from "../register/register";
-import { Userhome } from "./userhome/userhome";
+import { Cart } from './cart/cart';
 import { Adminhome } from './adminhome/adminhome';
 import { AddProduct } from "./add-product/add-product";
 
 @Component({
   selector: 'app-root',
-  imports: [Login, Return, Register, Userhome, Adminhome, AddProduct],
-
+  imports: [Register, Userhome, Adminhome, AddProduct, Login, Cart],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
 export class App {
-  protected readonly title = signal('Beauty');
+  protected readonly title = signal('Beauty');  
 }

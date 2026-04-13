@@ -1,10 +1,11 @@
+import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userhome',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './userhome.html',
   styleUrl: './userhome.css',
 })
@@ -13,6 +14,7 @@ Age: number=0;
 Gender: string = '';
 searchProduct: string = '';
 SkinType: string = '';
+filteredProducts: any[] = [];
 constructor(private router: Router) {}
 
 navigate(path: string) {
