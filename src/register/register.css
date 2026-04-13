@@ -1,113 +1,162 @@
-*, *::before, *::after {
-  box-sizing: border-box;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-  font-family: sans-serif;
-  background: #f0f0f0;
   min-height: 100vh;
+  background-color: #fce4ec;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 40px 20px;
 }
 
+/* FORM CARD */
 .form-card {
   background: #fff;
-  padding: 2rem;
-  border-radius: 12px;
+  border-radius: 20px;
+  padding: 40px 36px;
   width: 100%;
-  max-width: 400px;
+  max-width: 680px;
+  box-shadow: 0 8px 30px rgba(233, 30, 140, 0.12);
 }
 
-h2 {
-  margin-bottom: 1.5rem;
-  font-size: 20px;
+.form-card h2 {
+  font-size: 26px;
+  color: #c2185b;
+  font-weight: 700;
+  margin-bottom: 28px;
+  text-align: center;
 }
 
+/* TWO COLUMN ROW */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* FIELD */
 .field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-bottom: 1rem;
+  gap: 6px;
+  margin-bottom: 18px;
 }
 
 .field label {
   font-size: 13px;
-  color: #555;
+  font-weight: 600;
+  color: #c2185b;
 }
 
-.field input,
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="number"],
+.field input[type="password"],
+.field input[type="string"],
 .field select {
-  padding: 9px 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 10px 14px;
+  border: 2px solid #f48fb1;
+  border-radius: 10px;
   font-size: 14px;
   outline: none;
+  color: #333;
+  background: #fff5f9;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
 }
 
 .field input:focus,
 .field select:focus {
-  border-color: #534AB7;
+  border-color: #e91e8c;
+  background: #fff;
 }
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+.field input::placeholder {
+  color: #ccc;
 }
 
+.field select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23e91e8c' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+/* GENDER RADIO */
 .gender-group {
   display: flex;
-  gap: 12px;
-  padding: 9px 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  gap: 24px;
+  margin-top: 4px;
 }
 
 .radio-label {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 13px;
+  gap: 7px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
 }
 
+.radio-label input[type="radio"] {
+  accent-color: #e91e8c;
+  width: 16px;
+  height: 16px;
+}
+
+/* ERROR */
+.error {
+  color: #e91e8c;
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+/* SUBMIT BUTTON */
 .btn-primary {
   width: 100%;
-  padding: 10px;
-  background: #534AB7;
+  background: linear-gradient(135deg, #e91e8c, #c2185b);
   color: #fff;
   border: none;
-  border-radius: 6px;
+  padding: 13px;
+  border-radius: 25px;
   font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  margin-top: 0.5rem;
+  margin-top: 8px;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 14px rgba(233, 30, 140, 0.3);
 }
 
 .btn-primary:hover {
-  background: #3C3489;
+  opacity: 0.92;
+  transform: translateY(-2px);
 }
 
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* FOOTER LINK */
 .footer-link {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 20px;
   font-size: 13px;
-  color: #777;
+  color: #aaa;
 }
 
 .footer-link a {
-  color: #534AB7;
+  color: #e91e8c;
+  font-weight: 600;
   text-decoration: none;
 }
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 4px;
-  display: block;
-}
 
-input.ng-invalid.ng-touched,
-select.ng-invalid.ng-touched {
-  border-color: red;
+.footer-link a:hover {
+  text-decoration: underline;
 }
