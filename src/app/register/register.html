@@ -128,12 +128,15 @@
       </div>
 
     </div>
-
+<div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+<div class="success" *ngIf="successMessage">{{ successMessage }}</div>
     <button class="btn-primary" type="submit" >
       <span class="btn-label" >Create account</span>
     </button>
 
   </form>
+
+
 
   <p class="footer-link">Already have an account? <a routerLink="/login">Sign in</a></p>
 </div>

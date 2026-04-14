@@ -16,9 +16,10 @@
 
      <div class="search-wrapper">
   <div class="search-container">
-    <input type="text" class="search-input" placeholder="Search products..." [(ngModel)]="searchProduct">
-    <button class="search-btn">🔍</button>
-  </div>
+  <input type="text" class="search-input" placeholder="Search products..."
+    [(ngModel)]="searchProduct" (input)="onSearch()">
+  <button class="search-btn" (click)="onSearch()">🔍</button>
+</div>
 
   <div class="product-grid">
     <div class="product-card" *ngFor="let product of filteredProducts">
