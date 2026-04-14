@@ -8,12 +8,26 @@ import { Productservices } from '../Services/productservices';
 
 @Component({
   selector: 'app-userhome',
+<<<<<<< HEAD:src/app/userhome/userhome.ts
   standalone: true,
   imports: [FormsModule, CommonModule],  // CommonModule added
   templateUrl: './userhome.html',
   styleUrl: './userhome.css',
 })
 export class Userhome implements OnInit {
+=======
+  imports: [FormsModule, CommonModule],
+  templateUrl: './userhome.html',
+  styleUrl: './userhome.css',
+})
+export class Userhome {
+Age: number=0;
+Gender: string = '';
+searchProduct: string = '';
+SkinType: string = '';
+filteredProducts: any[] = [];
+constructor(private router: Router) {}
+>>>>>>> a599f91f44240ff20bc165a43cb21e065c9cee3a:src/userhome/userhome.ts
 
   email: string = '';
   searchProduct: string = '';
